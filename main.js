@@ -679,7 +679,10 @@ login_form.addEventListener("submit", (e) => {
 				userName = username;
 				if (remember_btn.checked) {
 					rememberLogin();
-					localStorage.removeItem("session");
+					const session = localStorage.getItem("session");
+					if (session) {
+						localStorage.removeItem("session");
+					}
 					localStorage.setItem("session", userId);
 				}
 				drawMessage("Login success", "success");
