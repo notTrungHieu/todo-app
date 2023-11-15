@@ -412,6 +412,7 @@ function clearLoginSession() {
 	userId = "";
 	userName = "";
 	isLogin = false;
+	todos = [];
 	greeting_label.innerHTML = "<h1> Hello </h1>";
 }
 
