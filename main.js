@@ -289,8 +289,7 @@ function deleteByUserId(id) {
 	fetch("http://localhost:1000/delete/" + id, {
 		method: "DELETE",
 	})
-		.then((response) => response.json())
-		});
+		.then((response) => response.json());
 }
 
 function insertTaskToDB(id, text, complete, user) {
