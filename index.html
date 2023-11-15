@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My To-Do List App</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body id="body">
+	
+	<main id="main">
+		<div class="message hide" id="message">
+			<div class="message-content" id="message-content">
+
+			</div>
+		</div>
+
+		<header>
+			<div class="greeting" id="greeting">
+				<h1> Hello </h1>
+			</div>
+			<div class="menu-container">
+				<div class="menu hide" id="menu-span">
+					<button id="login">Login</button>
+					<button id="signup">Signup</button>
+				</div>
+				<button class="material-icons menu-icon" id="menu">menu</button>
+			</div>
+			
+		</header>
+		<button class="hide" id="logout">Log out</button>
+
+		<div class="background hide" id="background"><!-- Login -->
+			<div class="login-container hide" id="login-container">
+				<span class="material-icons" id="close-login">close</span>
+				<div class="text">
+				   Login
+				</div>
+				
+				<form id="login-form">
+				   <div class="data">
+					  <label>Username</label>
+					  <input type="text" id="username-login" required>
+				   </div>
+				   <div class="data">
+					  <label>Password</label>
+					  <input type="password" id="pass-login" required>
+				   </div>
+				   <div class = "show-pass">
+					<input type="checkbox" id="s-pass-login">Show password
+					<input type="checkbox" id="remember">Remember me
+				   </div>
+				   <div class="btn">
+					  <div class="inner"></div>
+					  <button type="submit" id="login-btn">login</button>
+				   </div>
+				   <div class="signup-link">
+					  Not a member? <a href="#" id="signup-link">Signup now</a>
+				   </div>
+				</form>
+			 </div>
+	
+			 <!-- Signup -->
+	
+			 <div class="signup-container hide" id="signup-container">
+				<span class="material-icons" id="close-signup">close</span>
+				<div class="text">
+				   Signup
+				</div>
+				
+				<form id="signup-form">
+				   <div class="data">
+					  <label>Username</label>
+					  <input type="text" id ="username-signup" required>
+				   </div>
+				   <div class="data">
+					  <label>New password</label>
+					  <input type="password" id="pass-signup" required>
+				   </div>
+				   <div class="data">
+					<label>Confirm new password</label>
+					<input type="password" id="pass-signup-confirm" required>
+				 </div>
+				   <div class = "show-pass">
+					<input type="checkbox" id="s-pass-signup">Show password
+				   </div>
+	
+				   <div class="btn">
+					  <div class="inner"></div>
+					  <button type="submit" id="signup-btn">signup</button>
+				   </div>
+				   <div class="login-link">
+					  Already have account? <a href="#" id="login-link">Login</a>
+				   </div>
+				</form>
+			 </div></div>
+		
+		
+
+		 <!-- Main App -->
+
+		<div class="app">
+
+			<div class="head">
+				<h1>MY TO-DO LIST</h1>
+				<button id="create">Add new task</button>	
+				<!-- <button id="test">Test</button> -->
+			</div>
+
+			<div class="todo-list" id="list">
+
+			</div>
+
+			<div>
+				<button id="remove-finish">Remove completed task</button>
+			</div>
+		</div>
+	</main>
+
+	<script src="main.js"></script>
+</body>
+</html>
