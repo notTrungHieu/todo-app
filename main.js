@@ -361,6 +361,7 @@ function saveDB(user, arr) {
 }
 
 function saveLoginSession() {
+	sessionStorage.clear();
 	sessionStorage.setItem("user", JSON.stringify(userName));
 	sessionStorage.setItem("userId", JSON.stringify(userId));
 }
@@ -678,6 +679,7 @@ login_form.addEventListener("submit", (e) => {
 				userName = username;
 				if (remember_btn.checked) {
 					rememberLogin();
+					localStorage.removeItem("session");
 					localStorage.setItem("session", userId);
 				}
 				drawMessage("Login success", "success");
