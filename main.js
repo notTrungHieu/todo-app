@@ -15,7 +15,6 @@ const pass_login = document.getElementById("pass-login");
 const showpass_signup = document.getElementById("s-pass-signup");
 const pass_signup = document.getElementById("pass-signup");
 const pass_signup_confirm = document.getElementById("pass-signup-confirm");
-//const test_btn_el = document.getElementById("test");
 const menu_icon = document.getElementById("menu");
 const remember_btn = document.getElementById("remember");
 const greeting_label = document.getElementById("greeting");
@@ -36,8 +35,6 @@ let userName = "";
 
 let isLogin = false;
 
-
-//create_btn_el.addEventListener("click", console.log('press 2'));
 
 //===============FUNCTIONS===================
 
@@ -179,9 +176,6 @@ function CreateTodoElement(item, index) {
 		//const draggingId = getId(dragging_item);
 		const dragging_index = todos.findIndex((t) => t.id == getId(dragging_item));
 		let temp;
-		/* console.log('-----------dragged---------');
-		console.log(getId(dragging_item));
-		console.log(dragging_index); */
 
 		if (after == null) {
 			temp = todos[dragging_index];
@@ -230,159 +224,6 @@ function CreateTodoElement(item, index) {
 
 	return { item_el, input_el, edit_btn_el, remove_btn_el };
 }
-
-//============================================
-
-/* function CreateNewTodo() {
-	const item = {
-		id: new Date().getTime(),
-		text: "",
-		complete: false,
-	};
-	todos.unshift(item);
-	const { item_el, input_el } = CreateTodoElement(item, item.id);
-	list_el.prepend(item_el);
-	input_el.removeAttribute("disabled");
-	input_el.focus();
-}
-
-function CreateTodoElement(item, index) {
-	const item_el = document.createElement("div");
-	item_el.classList.add("item");
-	item_el.setAttribute("draggable", "true");
-	item_el.setAttribute("id", index);
-	const checkbox = document.createElement("input");
-	checkbox.type = "checkbox";
-	checkbox.checked = item.complete;
-
-	if (item.complete) {
-		item_el.classList.add("complete");
-	}
-
-	const input_el = document.createElement("input");
-	input_el.type = "text";
-	input_el.value = item.text;
-	input_el.setAttribute("disabled", "");
-
-	const actions_el = document.createElement("div");
-	actions_el.classList.add("actions");
-
-	const edit_btn_el = document.createElement("button");
-	edit_btn_el.classList.add("material-icons");
-	edit_btn_el.innerText = "edit";
-
-	const remove_btn_el = document.createElement("button");
-	remove_btn_el.classList.add("material-icons", "remove-btn");
-	remove_btn_el.innerText = "remove_circle";
-
-	actions_el.append(edit_btn_el);
-	actions_el.append(remove_btn_el);
-
-	item_el.append(checkbox);
-	item_el.append(input_el);
-	item_el.append(actions_el);
-
-	// EVENTS
-	checkbox.addEventListener("change", () => {
-		item.complete = checkbox.checked;
-
-		if (item.complete) {
-			item_el.classList.add("complete");
-		} else {
-			item_el.classList.remove("complete");
-		}
-
-		saveDB(userId, todos);
-	});
-
-	input_el.addEventListener("input", () => {
-		item.text = input_el.value;
-	});
-
-	input_el.addEventListener("keydown", function (e) {
-		if (e.key === "Enter") {
-			item.text = input_el.value;
-			input_el.setAttribute("disabled", "");
-			saveDB(userId, todos);
-			//console.log(e.key);
-		}
-	});
-
-	input_el.addEventListener("blur", () => {
-		input_el.setAttribute("disabled", "");
-		saveDB(userId, todos);
-	});
-
-	edit_btn_el.addEventListener("click", () => {
-		input_el.removeAttribute("disabled");
-		input_el.focus();
-		saveDB(userId, todos);
-	});
-
-	remove_btn_el.addEventListener("click", () => {
-		todos = todos.filter((t) => t.id != item.id);
-
-		item_el.remove();
-
-		saveDB(userId, todos);
-		//DisplayTodos();
-	});
-
-	item_el.addEventListener("dragstart", () => {
-		item_el.classList.add("dragging");
-	});
-
-	item_el.addEventListener("dragend", (e) => {
-		const dragging_item = document.querySelector(".dragging");
-		const after = getAfterTodo(list_el, e.clientY);
-		//const draggingId = getId(dragging_item);
-		const dragging_index = todos.findIndex((t) => t.id == getId(dragging_item));
-		let temp;
-		//console.log(dragging_index);
-		if (after == null) {
-			console.log(todos);
-			temp = todos[dragging_index];
-			todos = todos.filter((t) => t != todos[dragging_index]);
-			todos.push(temp);
-			//console.log(temp);
-			//console.log(after);
-		} else {
-			const after_index = todos.findIndex((t) => t.id == getId(after));
-			//console.log(after);
-			if (after_index == 0) {
-				temp = todos[dragging_index];
-				todos = todos.filter((t) => t != todos[dragging_index]);
-				todos.unshift(temp);
-			} else if (after_index > dragging_index) {
-				for (let i = dragging_index; i < after_index - 1; i++) {
-					[todos[i], todos[i + 1]] = [todos[i + 1], todos[i]];
-				}
-			} else if (after_index < dragging_index) {
-				for (let i = dragging_index; i > after_index; i--) {
-					[todos[i], todos[i - 1]] = [todos[i - 1], todos[i]];
-				}
-			}
-		}
-
-		item_el.classList.remove("dragging");
-
-		saveDB(userId, todos);
-	});
-
-	item_el.addEventListener("dragover", (e) => {
-		e.preventDefault();
-		const after = getAfterTodo(list_el, e.clientY);
-		//console.log(after);
-		const dragging_item = document.querySelector(".dragging");
-		if (after == null) {
-			list_el.appendChild(dragging_item);
-		} else {
-			list_el.insertBefore(dragging_item, after);
-		}
-	});
-
-	return { item_el, input_el, edit_btn_el, remove_btn_el };
-} */
 
 function DisplayTodosDB(arr) {
 	if (arr.length === 0) {
@@ -449,10 +290,6 @@ function deleteByUserId(id) {
 		method: "DELETE",
 	})
 		.then((response) => response.json())
-		.then((data) => {
-			if (data.success) {
-				// console.log("delete succcess");
-			}
 		});
 }
 
@@ -470,9 +307,6 @@ function insertTaskToDB(id, text, complete, user) {
 		}),
 	})
 		.then((response) => response.json())
-		.then((data) => {
-			//console.log(data["data"]);
-		});
 }
 
 function getUserInfo(id, pass) {
@@ -521,19 +355,6 @@ function insertUserToDB(id, pass) {
 
 function saveDB(user, arr) {
 	deleteByUserId(user);
-	/* for (let i = arr.length; i == 0; i--) {
-							console.log(arr[i].id);
-						} */
-
-	/* reverse_arr = arr.map((item, idx) => arr[arr.length - 1 - idx]);
-				  
-					  reverse_arr.forEach((t) => {
-						  insertTaskToDB(t.id, t.text, t.complete, userId);
-						  console.log('--------insert-------')
-						  console.log(t.id);
-						  console.log(t);
-					  }); */
-
 	arr.forEach((t) => {
 		insertTaskToDB(t.id, t.text, t.complete, userId);
 
@@ -666,105 +487,6 @@ function resetLoginForm() {
 	}
 }
 //==============EVENTS==============
-
-// TEST
-
-// test_btn_el.addEventListener("click", () => {
-// 	console.log("pressed");
-
-// 	// const session = localStorage.getItem("session")
-// 	// let sess_id = JSON.stringify(session);
-// 	// console.log(sess_id);
-// 	console.log(todos);
-
-// 	// console.log(userId);
-// 	// console.log(userName);
-// 	// console.log(isLogin);
-// 	//drawMessage("Hello", "success");
-// 	//loadGreeting();
-// 	//console.log("--------before---------");
-// 	//userId='bbb'
-// 	//clearLoginSession();
-// 	//location.reload();
-// 	//loadDataFromDB();
-// 	//fetch("http://localhost:1000/logout/")
-// 	//clearLoginSession();
-// 	// fetch("http://localhost:1000/login/", {
-// 	// 	headers: {
-// 	// 		"Content-type": "application/json",
-// 	// 	},
-// 	// 	method: "POST",
-// 	// 	body: JSON.stringify({
-// 	// 		id: "aaaa",
-// 	// 		password: "00000",
-// 	// 	}),
-// 	// })
-// 	// 	.then((response) => response.json())
-// 	// 	.then((data) => {
-// 	// 		console.log("--------after---------");
-// 	// 		if (data["data"].res) {
-// 	// 			console.log("login success");
-
-// 	// 			userId = data["data"].id;
-// 	// 			isLogin = true;
-// 	// 			console.log(userId);
-// 	// 			console.log(isLogin);
-// 	// 		} else {
-// 	// 			console.log("login failed");
-// 	// 		}
-
-// 	// 		console.log(data);
-// 	// 	});
-// 	/*fetch("http://localhost:1000/signup/", {
-// 					headers: {
-// 						"Content-type": "application/json",
-// 					},
-// 					method: "POST",
-// 					body: JSON.stringify({
-// 						//input here
-// 						id: "test1",
-// 						password: 5464,
-// 						//-----------
-// 					}),
-// 				})
-// 					.then((response) => response.json())
-// 					.then((data) => {
-// 						if (data["data"].res) {
-// 							console.log("signup succcess");
-// 							console.log(data["data"].id);
-// 						} else {
-// 							console.log("signup failed");
-// 						}
-// 					}); */
-
-// 	//saveDB(userId, todos);
-// 	//clearList();
-// });
-
-//TEST map()
-/* -----------------------------------------
-	  let array = [1, 2, 3, 4, 5];
-  	
-	  console.log("Original Array: ");
-	  console.log(array);
-  	
-	  reverse_array = array.map((item, idx) => array[array.length - 1 - idx])
-  	
-	  console.log("Reversed Array: ");
-	  console.log(reverse_array)
-	  --------------------------------------------*/
-
-//===================EVENTS HANDLE=================
-//LOGGED IN
-
-/* switch(isLogin){
-	case true:
-		window.addEventListener('load',loadDataFromDB())
-		//document.addEventListener('DOMContentLoaded', loadDataFromDB());
-	case false:
-		document.addEventListener('DOMContentLoaded', DisplayTodos());
-} */
-
 
 let signup_validate = false;
 
